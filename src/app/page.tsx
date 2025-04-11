@@ -1,7 +1,20 @@
 // import Image from "next/image";
+"use client";
+
+import { useShowHeader } from "@/hooks/useShowHeader";
 
 export default function Home() {
-  return <div>Home</div>;
+  const showHeader = useShowHeader();
+  console.log("showHeader", showHeader);
+
+  return (
+    <div className="h-screen">
+      <div className="h-full bg-nord-background dark:bg-nord-background-dark">
+        fdasf
+      </div>
+      <div className="h-60 bg-amber-900"></div>
+    </div>
+  );
 }
 
 // export default function Home() {
