@@ -3,7 +3,7 @@ import { useShowHeader } from "@/hooks/useShowHeader";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { SystemButtonGroup } from "./SystemButtonGroup";
+import { DesktopNav } from "./desktop";
 
 export const Header = () => {
   const show = useShowHeader();
@@ -38,7 +38,7 @@ export const Header = () => {
         />
         <span>Zhongqiu&rsquo;s Home</span>
       </Link>
-      <SystemButtonGroup />
+      <DesktopNav />
     </header>
   );
 };

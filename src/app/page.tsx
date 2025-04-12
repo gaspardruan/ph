@@ -1,12 +1,6 @@
 // import Image from "next/image";
-"use client";
-
-import { useShowHeader } from "@/hooks/useShowHeader";
 
 export default function Home() {
-  const showHeader = useShowHeader();
-  console.log("showHeader", showHeader);
-
   return (
     <div className="h-screen">
       <div className="h-full bg-nord-background dark:bg-nord-background-dark">

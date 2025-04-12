@@ -46,6 +46,8 @@ body {
   --color-nord-background-dark: #2e3440;
   --color-nord-foreground: #ffffff;
   --color-nord-foreground-dark: #252932;
+
+  --font-sans: var(--font-nunito);
 }
 
 body {
