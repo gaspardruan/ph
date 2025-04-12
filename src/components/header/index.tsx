@@ -3,6 +3,7 @@ import { useShowHeader } from "@/hooks/useShowHeader";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
+import { SystemButtonGroup } from "./SystemButtonGroup";
 
 export const Header = () => {
   const show = useShowHeader();
@@ -26,11 +27,18 @@ export const Header = () => {
           width={40}
           height={40}
           src="/R-white.png"
-          className="inline"
+          className="hidden dark:inline"
+        />
+        <Image
+          alt="R logo"
+          width={40}
+          height={40}
+          src="/R-black.png"
+          className="inline dark:hidden"
         />
         <span>Zhongqiu&rsquo;s Home</span>
       </Link>
-      <div className="triangle-up"></div>
+      <SystemButtonGroup />
     </header>
   );
 };

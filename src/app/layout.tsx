@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { ThemeInitializer } from "@/store/useThemeStore";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -25,7 +26,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=optional"
+        />
+      </head>
       <body>
+        <ThemeInitializer />
         <Header />
         {children}
       </body>
