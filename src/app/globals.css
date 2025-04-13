@@ -53,3 +53,11 @@ body {
 body {
   @apply text-gray-900 dark:text-gray-50;
 }
+
+.pr-scrollbar {
+  padding-right: var(--scrollbar-width);
+}
+
+.pr-scrollbar-header {
+  padding-right: calc(var(--scrollbar-width) + 1rem);
+}

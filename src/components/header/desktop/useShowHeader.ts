@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useEffectEvent } from "./useEffectEvent";
+import { useEffectEvent } from "../../../hooks/useEffectEvent";
 
 export const useShowHeader = () => {
   const path = usePathname();

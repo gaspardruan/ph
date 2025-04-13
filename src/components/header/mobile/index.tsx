@@ -1,0 +1,71 @@
+import clsx from "clsx";
+import { useSidebar } from "./useSideBar";
+import { useSidebarStore } from "./useSidebarStore";
+import { createPortal } from "react-dom";
+import { SystemButtonGroup } from "../SystemButtonGroup";
+
+export const MobileNav = () => {
+  const { isOpen, setIsOpen, scope, setScope } = useSidebarStore();
+
+  const { buttonRef, sidebarRef } = useSidebar();
+
+  const title = scope || "Menu";
+
+  const renderSidebarElement = () => {
+    return (
+      <nav
+        ref={sidebarRef}
+        className={clsx(
+          "flex flex-col",
+          "fixed top-0  bottom-0 w-60 pr-4 pl-6",
+          isOpen ? "right-0" : "-right-60",
+          "transition-[right] duration-300",
+          "rounded-l-2xl",
+          "text-nord-neutral dark:text-nord-neutral-dark",
+          "bg-gradient-to-b from-nord-foreground/[.64] to-nord-foreground/80 dark:from-nord-foreground-dark/[.64] dark:to-nord-foreground-dark/80",
+          "backdrop-blur",
+          "border border-nord-neutral/10 dark:border-nord-neutral-dark/10",
+          "shadow shadow-nord-background dark:shadow-nord-background-dark"
+        )}
+      >
+        <div className="flex h-16 px-2 items-center justify-between border-b border-nord-neutral/10  dark:border-nord-neutral-dark/10">
+          <div className="flex items-center gap-2" onClick={() => setScope("")}>
+            {true && (
+              <button className="material-symbols-outlined">
+                chevron_left
+              </button>
+            )}
+            <span>{title}</span>
+          </div>
+          <button
+            className="material-symbols-outlined"
+            onClick={() => setIsOpen(false)}
+          >
+            close
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto">
+          <div></div>
+        </div>
+        <div className="flex pb-8 justify-center">
+          <SystemButtonGroup />
+        </div>
+      </nav>
+    );
+  };
+
+  return (
+    <div className="flex md:hidden">
+      <button
+        ref={buttonRef}
+        onClick={() => setIsOpen(true)}
+        className="flex text-nord-neutral dark:text-nord-neutral-dark"
+      >
+        <div className="material-symbols-outlined">Menu</div>
+      </button>
+      {typeof window !== "undefined"
+        ? createPortal(renderSidebarElement(), document.body)
+        : renderSidebarElement()}
+    </div>
+  );
+};

@@ -3,10 +3,13 @@
 export default function Home() {
   return (
     <div className="h-screen">
-      <div className="h-full bg-nord-background dark:bg-nord-background-dark">
+      <div
+        id="main"
+        className="h-full bg-nord-background dark:bg-nord-background-dark"
+      >
         fdasf
       </div>
-      <div className="h-60 bg-amber-900"></div>
+      <div id="footer" className="h-60 bg-amber-900"></div>
     </div>
   );
 }

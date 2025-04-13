@@ -1,9 +1,10 @@
 "use client";
-import { useShowHeader } from "@/hooks/useShowHeader";
+import { useShowHeader } from "@/components/header/desktop/useShowHeader";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { DesktopNav } from "./desktop";
+import { MobileNav } from "./mobile";
 
 export const Header = () => {
   const show = useShowHeader();
@@ -39,6 +40,7 @@ export const Header = () => {
         <span>Zhongqiu&rsquo;s Home</span>
       </Link>
       <DesktopNav />
+      <MobileNav />
     </header>
   );
 };

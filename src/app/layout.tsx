@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
-import { ThemeInitializer } from "@/store/useThemeStore";
+import { ScrollbarWidthInitializer } from "@/components/ScrollbarWidthInitializer";
+import { ThemeInitializer } from "@/components/ThemeInitalizer";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={nunito.variable}>
+    <html className={nunito.variable}>
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
@@ -33,6 +34,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeInitializer />
+        <ScrollbarWidthInitializer />
         <Header />
         {children}
       </body>
