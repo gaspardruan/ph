@@ -9,7 +9,6 @@ export default function Home() {
       >
         fdasf
       </div>
-      <div id="footer" className="h-60 bg-amber-900"></div>
     </div>
   );
 }

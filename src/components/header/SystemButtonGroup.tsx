@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { PropsWithChildren } from "react";
+import { memo, PropsWithChildren } from "react";
 import { Github } from "../SVGIcon";
 import { useThemeStore } from "@/store/useThemeStore";
 
@@ -24,7 +24,7 @@ const SystemButtonItem = ({ children, onClick }: SystemButtonItemProps) => {
   );
 };
 
-export const SystemButtonGroup = () => {
+export const SystemButtonGroup = memo(function SystemButtonGroup() {
   const toggleDarkMode = useThemeStore((state) => state.toggleDarkMode);
 
   return (
@@ -39,4 +39,4 @@ export const SystemButtonGroup = () => {
       </SystemButtonItem>
     </div>
   );
-};
+});

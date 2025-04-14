@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { ScrollbarWidthInitializer } from "@/components/ScrollbarWidthInitializer";
 import { ThemeInitializer } from "@/components/ThemeInitalizer";
+import { Footer } from "@/components/Footer";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <ScrollbarWidthInitializer />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -7,3 +7,5 @@ export const softwareConfig: DocConfigItem = {
   scope: "software",
   items: ["pflux", "mmimage"],
 };
+
+export const docConfig: DocConfigItem[] = [softwareConfig];

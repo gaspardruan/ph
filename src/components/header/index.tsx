@@ -1,10 +1,9 @@
 "use client";
 import { useShowHeader } from "@/components/header/desktop/useShowHeader";
 import clsx from "clsx";
-import Image from "next/image";
-import Link from "next/link";
 import { DesktopNav } from "./desktop";
 import { MobileNav } from "./mobile";
+import { Logo } from "./Logo";
 
 export const Header = () => {
   const show = useShowHeader();
@@ -22,23 +21,7 @@ export const Header = () => {
         !show && "-translate-y-full"
       )}
     >
-      <Link href="/" className="flex items-center gap-2 lg:gap-4">
-        <Image
-          alt="R logo"
-          width={40}
-          height={40}
-          src="/R-white.png"
-          className="hidden dark:inline"
-        />
-        <Image
-          alt="R logo"
-          width={40}
-          height={40}
-          src="/R-black.png"
-          className="inline dark:hidden"
-        />
-        <span>Zhongqiu&rsquo;s Home</span>
-      </Link>
+      <Logo />
       <DesktopNav />
       <MobileNav />
     </header>
