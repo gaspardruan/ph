@@ -3,7 +3,7 @@ import { useShowHeader } from "@/components/header/desktop/useShowHeader";
 import clsx from "clsx";
 import { DesktopNav } from "./desktop";
 import { MobileNav } from "./mobile";
-import { Logo } from "./Logo";
+import { Logo } from "../Logo";
 
 export const Header = () => {
   const show = useShowHeader();

@@ -1,0 +1,32 @@
+.path {
+  stroke-dasharray: 350px 0;
+  stroke-dashoffset: 1px;
+  animation: draw 10s ease forwards infinite;
+  fill: none;
+  stroke-width: 7px;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 1px;
+    stroke-dasharray: 0 350px;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  40% {
+    stroke-dasharray: 350px 0;
+  }
+
+  85% {
+    stroke-dasharray: 350px 0;
+  }
+
+  95%,
+  to {
+    stroke-dasharray: 0 350px;
+  }
+}

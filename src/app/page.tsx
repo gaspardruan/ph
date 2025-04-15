@@ -1,15 +1,18 @@
-// import Image from "next/image";
+"use client";
+
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
+  const pathname = usePathname();
   return (
-    <div className="h-screen">
-      <div
-        id="main"
-        className="h-full bg-nord-background dark:bg-nord-background-dark"
-      >
-        fdasf
+    <main className={clsx("flex-grow", pathname !== "/" && "mt-[18]")}>
+      <div className="h-screen">
+        <div className="h-full bg-nord-background dark:bg-nord-background-dark">
+          fdasf
+        </div>
       </div>
-    </div>
+    </main>
   );
 }
 

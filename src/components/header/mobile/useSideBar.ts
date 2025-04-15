@@ -55,11 +55,11 @@ export const useSidebar = () => {
     headerElement?.classList.toggle("pr-scrollbar-header", isOpen);
 
     // main
-    const rootElement = document.getElementById("main");
+    const rootElement = document.querySelector("main");
     rootElement?.classList.toggle("pr-scrollbar", isOpen);
 
     // footer
-    const footerElement = document.getElementById("footer");
+    const footerElement = document.querySelector("footer");
     footerElement?.classList.toggle("pr-scrollbar", isOpen);
 
     if (!isOpen) {
