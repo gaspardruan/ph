@@ -1,17 +1,14 @@
 "use client";
 
+import { Liquid } from "@/components/Liquid";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
 export default function Home() {
   const pathname = usePathname();
   return (
-    <main className={clsx("flex-grow", pathname !== "/" && "mt-[18]")}>
-      <div className="h-screen">
-        <div className="h-full bg-nord-background dark:bg-nord-background-dark">
-          fdasf
-        </div>
-      </div>
+    <main className={clsx(pathname !== "/" && "mt-[18]")}>
+      <Liquid></Liquid>
     </main>
   );
 }

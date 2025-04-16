@@ -12,7 +12,7 @@ export const Header = () => {
     <header
       className={clsx(
         "flex justify-between items-center",
-        "fixed w-full",
+        "fixed w-full z-1",
         "py-4 px-4 lg:px-10 xl:px-20",
         "backdrop-blur",
         "shadow shadow-nord-background dark:shadow-nord-background-dark",
