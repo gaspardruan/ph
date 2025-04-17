@@ -15,7 +15,6 @@ const SystemButtonItem = ({ children, onClick }: SystemButtonItemProps) => {
         "flex h-8 w-8 items-center justify-center",
         "cursor-pointer rounded",
         "fill-nord-neutral dark:fill-nord-neutral-dark",
-        "text-nord-neutral dark:text-nord-neutral-dark",
         "transition hover:bg-nord-secondary-deep/[0.12] active:bg-nord-secondary-deep/20"
       )}
     >

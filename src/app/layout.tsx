@@ -35,7 +35,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=optional"
         />
       </head>
-      <body className="flex flex-col text-gray-900 dark:text-gray-50">
+      <body className="flex flex-col text-nord-neutral dark:text-nord-neutral-dark">
         <ThemeInitializer />
         <ScrollbarWidthInitializer />
         <Header />

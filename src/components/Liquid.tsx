@@ -10,7 +10,7 @@ export const Liquid = ({ children }: PropsWithChildren) => {
         "bg-nord-background dark:bg-nord-background-dark"
       )}
     >
-      <div className="absolute flex justify-center w-full">
+      <div className="absolute flex justify-center w-full liquid-bg">
         <div className="max-w-[1200px] min-w-[750px] w-full">
           <svg
             xmlns="http://www.w3.org/2000/svg"

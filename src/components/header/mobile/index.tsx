@@ -48,11 +48,10 @@ export const MobileNav = memo(function MobileNav() {
         ref={sidebarRef}
         className={clsx(
           "flex flex-col",
-          "fixed top-0  bottom-0 w-60 pr-4 pl-6",
+          "fixed top-0  bottom-0 w-60 pr-4 pl-6 z-2",
           isOpen ? "right-0" : "-right-60",
           "transition-[right] duration-300",
           "rounded-l-2xl",
-          "text-nord-neutral dark:text-nord-neutral-dark",
           "bg-gradient-to-b from-nord-foreground/[.64] to-nord-foreground/80 dark:from-nord-foreground-dark/[.64] dark:to-nord-foreground-dark/80",
           "backdrop-blur",
           "border border-nord-neutral/10 dark:border-nord-neutral-dark/10",
@@ -89,11 +88,7 @@ export const MobileNav = memo(function MobileNav() {
 
   return (
     <div className="flex md:hidden">
-      <button
-        ref={buttonRef}
-        onClick={() => setIsOpen(true)}
-        className="flex text-nord-neutral dark:text-nord-neutral-dark"
-      >
+      <button ref={buttonRef} onClick={() => setIsOpen(true)} className="flex">
         <div className="material-symbols-outlined">Menu</div>
       </button>
       {typeof window !== "undefined"

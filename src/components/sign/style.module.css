@@ -1,9 +1,10 @@
-.path {
+/* .path {
   stroke-dasharray: 350px 0;
   stroke-dashoffset: 1px;
   animation: draw 10s ease forwards infinite;
   fill: none;
   stroke-width: 7px;
+  stroke: white;
 }
 
 @keyframes draw {
@@ -28,5 +29,28 @@
   95%,
   to {
     stroke-dasharray: 0 350px;
+  }
+} */
+
+.path {
+  animation: draw 3s ease 0.5s backwards;
+
+  fill: none;
+  stroke-width: 7px;
+  stroke: white;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dasharray: 0 350px;
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dasharray: 350px 0;
   }
 }

@@ -46,16 +46,18 @@
 }
 
 .liquid-cover {
-  svg {
-    width: 100%;
-    height: auto;
-    g {
-      @apply drop-shadow-(--drop-shadow-custom) dark:drop-shadow-(--drop-shadow-custom-dark);
+  .liquid-bg {
+    svg {
+      width: 100%;
+      height: auto;
+      g {
+        @apply drop-shadow-(--drop-shadow-custom) dark:drop-shadow-(--drop-shadow-custom-dark);
 
-      path {
-        @apply fill-nord-foreground dark:fill-nord-foreground-dark;
-        animation: liquidFlow 1.2s ease-in-out forwards;
-        transform-origin: center top;
+        path {
+          @apply fill-nord-foreground dark:fill-nord-foreground-dark;
+          animation: liquidFlow 1.2s ease-in-out forwards;
+          transform-origin: center top;
+        }
       }
     }
   }
@@ -69,5 +71,18 @@
   100% {
     opacity: 1;
     transform: translateY(0px);
+  }
+}
+
+.liquid-content {
+  animation: fadeIn 0.5s ease var(--animation-delay) backwards;
+  &.content-delay-300 {
+    --animation-delay: 0.3s;
+  }
+  &.content-delay-500 {
+    --animation-delay: 0.5s;
+  }
+  &.content-delay-700 {
+    --animation-delay: 0.7s;
   }
 }

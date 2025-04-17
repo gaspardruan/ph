@@ -1,14 +1,58 @@
 "use client";
 
 import { Liquid } from "@/components/Liquid";
+import { Signature } from "@/components/sign";
 import clsx from "clsx";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Home() {
   const pathname = usePathname();
   return (
     <main className={clsx(pathname !== "/" && "mt-[18]")}>
-      <Liquid></Liquid>
+      <Liquid>
+        <div
+          className={clsx(
+            "relative min-w-64 h-full",
+            "flex flex-col items-center justify-center"
+          )}
+        >
+          <Image
+            src="/young.jpg"
+            width={161}
+            height={288}
+            alt="me"
+            priority
+            className={clsx(
+              "w-30 sm:w-35 xl:w-40",
+              "liquid-content  content-delay-300"
+            )}
+          />
+          <h1
+            className={clsx(
+              "font-bold text-xl sm:text-6xl xl:text-7xl",
+              "my-4",
+              "flex items-center",
+              "liquid-content content-delay-500"
+            )}
+          >
+            <div className="w-10 h-12 sm:w-30 sm:h-36 xl:w-36 xl:h-43">
+              <Signature />
+            </div>
+            uan Zhongqiu
+          </h1>
+          <p
+            className={clsx(
+              "text-base sm:text-2xl text-center",
+              "w-96 sm:w-full",
+              "liquid-content content-delay-700"
+            )}
+          >
+            Love clean code, exploring, gaming, and learning everything happens
+            to come my way.
+          </p>
+        </div>
+      </Liquid>
     </main>
   );
 }
