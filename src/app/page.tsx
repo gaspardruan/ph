@@ -1,15 +1,30 @@
 "use client";
 
+import { HomeEditor } from "@/components/HomeEditor";
 import { Liquid } from "@/components/Liquid";
 import { Signature } from "@/components/sign";
 import clsx from "clsx";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+const doc = `# About me
+I was born on the Mid-Autumn Festival and grew up in a small town in Wuhan where I finished \
+primary school and junior high school, from which I graduated with the first place. Then I \
+went to the best high school in the district but three years later I failed the university \
+entrance examination, which I decided to take again. Then I attended the BeiHang University \
+in Beijing majoring in software engineering. When I am bored, I'd like to play the LOL(I \
+like TiMo the most), read comics and watch animations. Besides, I attach the photo here \
+because I think I was more handsome at that time than now...`;
+
 export default function Home() {
   const pathname = usePathname();
   return (
-    <main className={clsx(pathname !== "/" && "mt-[18]")}>
+    <main
+      className={clsx(
+        pathname !== "/" && "mt-[18]",
+        "bg-nord-background dark:bg-nord-background-dark"
+      )}
+    >
       <Liquid>
         <div
           className={clsx(
@@ -36,7 +51,12 @@ export default function Home() {
               "liquid-content content-delay-500"
             )}
           >
-            <div className="w-10 h-12 sm:w-30 sm:h-36 xl:w-36 xl:h-43">
+            <div
+              className={clsx(
+                "w-10 h-12 sm:w-30 sm:h-36 xl:w-36 xl:h-43",
+                "stroke-nord-neutral dark:stroke-nord-neutral-dark"
+              )}
+            >
               <Signature />
             </div>
             uan Zhongqiu
@@ -53,6 +73,9 @@ export default function Home() {
           </p>
         </div>
       </Liquid>
+      <div className="mx-8 my-10 md:mx-24 md:my-24 lg:mx-40 xl:mx-80 2xl:mx-auto 2xl:max-w-4xl">
+        <HomeEditor value={doc.trim()} />
+      </div>
     </main>
   );
 }

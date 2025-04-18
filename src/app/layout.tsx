@@ -6,6 +6,8 @@ import { ScrollbarWidthInitializer } from "@/components/ScrollbarWidthInitialize
 import { ThemeInitializer } from "@/components/ThemeInitalizer";
 import { Footer } from "@/components/Footer";
 
+import "@milkdown/crepe/theme/common/style.css";
+import "@milkdown/crepe/theme/nord.css";
 import "./globals.css";
 
 const nunito = Nunito({

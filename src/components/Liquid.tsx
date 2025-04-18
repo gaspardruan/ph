@@ -4,11 +4,7 @@ import { PropsWithChildren } from "react";
 export const Liquid = ({ children }: PropsWithChildren) => {
   return (
     <div
-      className={clsx(
-        "liquid-cover",
-        "relative  h-screen  overflow-hidden",
-        "bg-nord-background dark:bg-nord-background-dark"
-      )}
+      className={clsx("liquid-cover", "relative  h-screen  overflow-hidden")}
     >
       <div className="absolute flex justify-center w-full liquid-bg">
         <div className="max-w-[1200px] min-w-[750px] w-full">

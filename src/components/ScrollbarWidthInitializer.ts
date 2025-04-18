@@ -6,7 +6,6 @@ export const ScrollbarWidthInitializer = () => {
   useEffect(() => {
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
-    console.log("Here");
 
     const className = "scrollbar-width-applied";
     const style = document.createElement("style");
@@ -17,7 +16,7 @@ export const ScrollbarWidthInitializer = () => {
   `;
     document.head.appendChild(style);
     document.documentElement.classList.add(className);
-  }, []); // 空依赖数组，确保只运行一次
+  }, []);
 
   return null;
 };

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./crepe.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
