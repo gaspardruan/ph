@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
+import { Inter, JetBrains_Mono, Nunito, Rubik } from "next/font/google";
 
 import { Header } from "@/components/header";
 import { ScrollbarWidthInitializer } from "@/components/ScrollbarWidthInitializer";
@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import "@milkdown/crepe/theme/common/style.css";
 import "@milkdown/crepe/theme/nord.css";
 import "./globals.css";
+import clsx from "clsx";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -16,6 +17,24 @@ const nunito = Nunito({
   display: "swap",
   weight: ["200", "300", "400", "500", "600", "700", "800", "900", "1000"],
   style: ["normal", "italic"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const rubik = Rubik({
+  subsets: ["latin"],
+  variable: "--font-rubik",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -29,7 +48,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={nunito.variable}>
+    <html
+      className={clsx(
+        nunito.variable,
+        inter.variable,
+        rubik.variable,
+        jetbrainsMono.variable
+      )}
+    >
       <head>
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link

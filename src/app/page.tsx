@@ -8,13 +8,16 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const doc = `# About me
-I was born on the Mid-Autumn Festival and grew up in a small town in Wuhan where I finished \
-primary school and junior high school, from which I graduated with the first place. Then I \
-went to the best high school in the district but three years later I failed the university \
-entrance examination, which I decided to take again. Then I attended the BeiHang University \
-in Beijing majoring in software engineering. When I am bored, I'd like to play the LOL(I \
-like TiMo the most), read comics and watch animations. Besides, I attach the photo here \
-because I think I was more handsome at that time than now...`;
+I was born on the Mid-Autumn Festival and grew up in a small town in Wuhan, 
+where I completed primary school and junior high. After that, I was admitted 
+to the best high school in the district. However, three years later, I didn't 
+perform well in the university entrance examination, so I decided to take it again.
+
+Eventually, I was admitted to Beihang, majoring in Software Engineering. Now, 
+I’m about to begin my graduate studies in Software Engineering at Tsinghua.
+
+When I'm bored, I like to play LOL and Hearthstone, read comics, and watch animations.
+Also, I’ve attached a photo from earlier—I think I looked better back then than I do now...`;
 
 export default function Home() {
   const pathname = usePathname();

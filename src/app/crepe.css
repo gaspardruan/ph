@@ -17,11 +17,6 @@
   --crepe-color-selected: #32353a;
   --crepe-color-inline-area: #111418;
 
-  --crepe-font-title: Rubik, Cambria, "Times New Roman", Times, serif;
-  --crepe-font-default: Inter, Arial, Helvetica, sans-serif;
-  --crepe-font-code: "JetBrains Mono", Menlo, Monaco, "Courier New", Courier,
-    monospace;
-
   --crepe-shadow-1: 0px 1px 2px 0px rgba(255, 255, 255, 0.3),
     0px 1px 3px 1px rgba(255, 255, 255, 0.15);
   --crepe-shadow-2: 0px 1px 2px 0px rgba(255, 255, 255, 0.3),
@@ -30,4 +25,8 @@
 
 .crepe > .milkdown > .ProseMirror {
   @apply px-10 py-5 sm:px-20 sm:py-10 md:px-25 md:py-12 lg:px-30 lg:py-15;
+}
+
+.milkdown .ProseMirror p {
+  @apply text-justify;
 }
