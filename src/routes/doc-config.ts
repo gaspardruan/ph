@@ -4,7 +4,7 @@ export type DocConfigItem = {
 };
 
 export const softwareConfig: DocConfigItem = {
-  scope: "software",
+  scope: "project",
   items: ["pflux", "mmimage"],
 };
 

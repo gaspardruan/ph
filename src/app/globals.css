@@ -29,6 +29,17 @@
   --drop-shadow-custom-dark: 0 2px 5px rgba(15, 17, 21, 0.2);
 }
 
+main {
+  #home {
+    @apply bg-nord-background dark:bg-nord-background-dark;
+  }
+
+  &:not(#home) {
+    @apply mt-18;
+    @apply flex-grow;
+  }
+}
+
 .pr-scrollbar {
   padding-right: var(--scrollbar-width);
 }

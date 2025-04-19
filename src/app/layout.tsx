@@ -63,7 +63,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=optional"
         />
       </head>
-      <body className="flex flex-col text-nord-neutral dark:text-nord-neutral-dark">
+      <body
+        className={clsx(
+          "min-h-screen flex flex-col",
+          "text-nord-neutral dark:text-nord-neutral-dark",
+          "bg-[#fdfcff] dark:bg-[#1b1c1d]"
+        )}
+      >
         <ThemeInitializer />
         <ScrollbarWidthInitializer />
         <Header />

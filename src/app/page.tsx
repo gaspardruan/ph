@@ -5,7 +5,6 @@ import { Liquid } from "@/components/Liquid";
 import { Signature } from "@/components/sign";
 import clsx from "clsx";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
 const doc = `# About me
 I was born on the Mid-Autumn Festival and grew up in a small town in Wuhan, 
@@ -17,16 +16,13 @@ Eventually, I was admitted to Beihang, majoring in Software Engineering. Now,
 I’m about to begin my graduate studies in Software Engineering at Tsinghua.
 
 When I'm bored, I like to play LOL and Hearthstone, read comics, and watch animations.
-Also, I’ve attached a photo from earlier—I think I looked better back then than I do now...`;
+Also, I’ve attached a photo from earlier — I think I looked better back then than I do now...`;
 
 export default function Home() {
-  const pathname = usePathname();
   return (
     <main
-      className={clsx(
-        pathname !== "/" && "mt-[18]",
-        "bg-nord-background dark:bg-nord-background-dark"
-      )}
+      id="home"
+      className={clsx("bg-nord-background dark:bg-nord-background-dark")}
     >
       <Liquid>
         <div
@@ -76,7 +72,7 @@ export default function Home() {
           </p>
         </div>
       </Liquid>
-      <div className="mx-8 my-10 md:mx-24 md:my-24 lg:mx-40 xl:mx-80 2xl:mx-auto 2xl:max-w-4xl">
+      <div className="mx-8 mb-10 md:mx-24 md:mb-24 lg:mx-40 xl:mx-80 2xl:mx-auto 2xl:max-w-4xl">
         <HomeEditor value={doc.trim()} />
       </div>
     </main>

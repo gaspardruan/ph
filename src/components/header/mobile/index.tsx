@@ -13,9 +13,7 @@ const ScopeList = () => {
   if (!scope) {
     return (
       <>
-        <NavButton text="Software" />
-        <NavButton text="Tests" />
-        <LinkButton text="Blog" link="/blog" />
+        <NavButton text="Project" />
       </>
     );
   }

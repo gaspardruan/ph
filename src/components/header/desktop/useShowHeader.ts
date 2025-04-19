@@ -8,6 +8,10 @@ export const useShowHeader = () => {
   const path = usePathname();
   const [show, setShow] = useState(false);
 
+  useEffect(() => {
+    setShow(path !== "/");
+  }, [path]);
+
   const onScroll = useEffectEvent(() => {
     if (show) {
       if (document.documentElement.scrollTop === 0) {
