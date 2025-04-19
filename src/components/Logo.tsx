@@ -10,7 +10,7 @@ export const Logo = memo(function Logo() {
         width={40}
         height={40}
         src="/R-black.png"
-        className="inline  dark:invert hover:hidden "
+        className="inline  dark:invert"
       />
     </Link>
   );
