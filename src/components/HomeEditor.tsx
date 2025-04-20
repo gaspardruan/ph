@@ -7,9 +7,6 @@ type HomeEditorProps = {
 
 export const HomeEditor = ({ value }: HomeEditorProps) => {
   const divRef = useRef<HTMLDivElement>(null);
-  const loading = useRef(true);
-
-  console.log("Editor rendered");
 
   useLayoutEffect(() => {
     if (!divRef.current) return;
@@ -26,10 +23,7 @@ export const HomeEditor = ({ value }: HomeEditorProps) => {
     });
 
     crepe.setReadonly(true);
-
-    crepe.create().then(() => {
-      loading.current = false;
-    });
+    crepe.create();
 
     return () => {
       crepe.destroy();
