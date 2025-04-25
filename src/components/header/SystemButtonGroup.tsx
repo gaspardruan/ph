@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import { memo, PropsWithChildren } from "react";
-import { Github } from "../SVGIcon";
 import { useThemeStore } from "@/store/useThemeStore";
+import { Github } from "../icon/Github";
+import { Moon } from "lucide-react";
 
 type SystemButtonItemProps = PropsWithChildren<{
   onClick?: () => void;
@@ -34,7 +35,7 @@ export const SystemButtonGroup = memo(function SystemButtonGroup() {
         </SystemButtonItem>
       </a>
       <SystemButtonItem onClick={() => toggleDarkMode()}>
-        <div className="material-symbols-outlined">dark_mode</div>
+        <Moon strokeWidth={1.5} />
       </SystemButtonItem>
     </div>
   );

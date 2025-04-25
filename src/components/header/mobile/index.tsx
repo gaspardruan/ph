@@ -7,6 +7,7 @@ import { LinkButton, NavButton } from "./NavButton";
 import { docConfig } from "@/routes/doc-config";
 import { toTitle } from "@/utils/title";
 import { memo } from "react";
+import { Menu } from "lucide-react";
 
 const ScopeList = () => {
   const scope = useSidebarStore((state) => state.scope);
@@ -87,7 +88,7 @@ export const MobileNav = memo(function MobileNav() {
   return (
     <div className="flex md:hidden">
       <button ref={buttonRef} onClick={() => setIsOpen(true)} className="flex">
-        <div className="material-symbols-outlined">Menu</div>
+        <Menu />
       </button>
       {typeof window !== "undefined"
         ? createPortal(renderSidebarElement(), document.body)

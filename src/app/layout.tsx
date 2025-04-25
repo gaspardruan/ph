@@ -55,13 +55,6 @@ export default function RootLayout({
         jetbrainsMono.variable
       )}
     >
-      <head>
-        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=optional"
-        />
-      </head>
       <body
         className={clsx(
           "min-h-screen flex flex-col",

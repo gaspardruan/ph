@@ -1,4 +1,3 @@
-import { ChevronDown } from "@/components/SVGIcon";
 import {
   offset,
   safePolygon,
@@ -7,6 +6,7 @@ import {
   useInteractions,
 } from "@floating-ui/react";
 import clsx from "clsx";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { PropsWithChildren, useState } from "react";
 
@@ -55,7 +55,7 @@ export const TextButton = ({ text, children }: TextButtonProps) => {
       >
         <span className="text-sm">{text}</span>
         <div>
-          <ChevronDown />
+          <ChevronDown size={20} />
         </div>
       </button>
       {isOpen && (
