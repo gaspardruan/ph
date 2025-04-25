@@ -43,24 +43,9 @@ export const useSidebar = () => {
     };
   }, [handleClick]);
 
-  // add padding right for three main elements when hiding scrollbar to prevent layout shift
-  // header, main, footer
-  // why don't add padding right to body? background colors are not same.
   useEffect(() => {
     // body
     document.body.classList.toggle("overflow-y-hidden", isOpen);
-
-    // header
-    const headerElement = document.querySelector("header");
-    headerElement?.classList.toggle("pr-scrollbar-header", isOpen);
-
-    // main
-    const rootElement = document.querySelector("main");
-    rootElement?.classList.toggle("pr-scrollbar", isOpen);
-
-    // footer
-    const footerElement = document.querySelector("footer");
-    footerElement?.classList.toggle("pr-scrollbar", isOpen);
 
     if (!isOpen) {
       setScope(typeof scope === "string" ? scope : "");

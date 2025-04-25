@@ -40,12 +40,14 @@ main {
   }
 }
 
-.pr-scrollbar {
-  padding-right: var(--scrollbar-width);
+.styled-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  scrollbar-color: var(--color-nord-dim) transparent;
 }
 
-.pr-scrollbar-header {
-  padding-right: calc(var(--scrollbar-width) + 1rem);
+.dark .styled-scrollbar {
+  scrollbar-color: var(--color-nord-dim-dark) transparent;
 }
 
 @keyframes liquidFlow {

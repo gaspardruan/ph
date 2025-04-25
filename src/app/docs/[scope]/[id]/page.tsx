@@ -48,7 +48,11 @@ export default async function DocRenderer({
   const doc = await getDocs(params);
   return (
     <main>
-      <div>
+      <div
+        className={
+          "mx-8 pb-10 pt-24 md:mx-24 md:pb-24 lg:mx-40 xl:mx-80 2xl:max-auto 2xl:max-w-4xl"
+        }
+      >
         <Doc content={doc} />
       </div>
     </main>

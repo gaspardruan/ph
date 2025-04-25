@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Nunito, Rubik } from "next/font/google";
 
 import { Header } from "@/components/header";
-import { ScrollbarWidthInitializer } from "@/components/ScrollbarWidthInitializer";
 import { ThemeInitializer } from "@/components/ThemeInitalizer";
 import { Footer } from "@/components/Footer";
 
@@ -71,7 +70,6 @@ export default function RootLayout({
         )}
       >
         <ThemeInitializer />
-        <ScrollbarWidthInitializer />
         <Header />
         {children}
         <Footer />

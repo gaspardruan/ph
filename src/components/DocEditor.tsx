@@ -7,19 +7,15 @@ import { listener, listenerCtx } from "@milkdown/kit/plugin/listener";
 import { outline } from "@milkdown/kit/utils";
 import { eclipse } from "@uiw/codemirror-theme-eclipse";
 import { useEffect, useRef, useState } from "react";
+import { Outline, type OutlineItem } from "./Outline";
+import clsx from "clsx";
 
 type DocProps = {
   content: string;
 };
 
-type TableItem = {
-  text: string;
-  level: number;
-  id: string;
-};
-
 export const Doc = ({ content }: DocProps) => {
-  const [table, setTable] = useState<TableItem[]>([]);
+  const [outlines, setOutlines] = useState<OutlineItem[]>([]);
   const darkMode = useThemeStore((state) => state.darkMode);
   const divRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +47,7 @@ export const Doc = ({ content }: DocProps) => {
           editable: () => false,
         });
         ctx.get(listenerCtx).mounted((ctx) => {
-          setTable(outline()(ctx));
+          setOutlines(outline()(ctx));
         });
       })
       .use(listener);
@@ -67,6 +63,15 @@ export const Doc = ({ content }: DocProps) => {
   return (
     <>
       <div className="crepe crepe-doc" ref={divRef} />
+      <div
+        className={clsx(
+          "fixed top-50 right-16 bottom-32",
+          "hidden xl:flex xl:w-60 flex-col 2xl:right-[calc(50vw-43rem)]",
+          "overflow-y-auto styled-scrollbar"
+        )}
+      >
+        <Outline items={outlines} />
+      </div>
     </>
   );
 };
