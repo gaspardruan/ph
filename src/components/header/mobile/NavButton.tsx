@@ -11,11 +11,15 @@ export const NavButton = ({ text }: NavButtonProps) => {
   const setScope = useSidebarStore((state) => state.setScope);
   const params = useParams();
   const scope = params.scope;
+  const lowerText = text.toLowerCase();
 
   return (
     <button
-      onClick={() => setScope(text.toLowerCase())}
-      className={clsx("flex items-center justify-between")}
+      onClick={() => setScope(lowerText)}
+      className={clsx(
+        "flex items-center justify-between",
+        scope === lowerText && "font-bold text-nord-primary"
+      )}
     >
       <span className="text-sm">{text}</span>
       <span className="material-symbols-outlined !text-(length:--text-xl)">
@@ -34,7 +38,13 @@ export const LinkButton = ({ text, link }: LinkButtonProps) => {
   const pathname = usePathname();
 
   return (
-    <Link href={link} className={clsx("flex")}>
+    <Link
+      href={link}
+      className={clsx(
+        "flex",
+        pathname === link && "font-bold text-nord-primary"
+      )}
+    >
       <span className="text-sm">{text}</span>
     </Link>
   );
