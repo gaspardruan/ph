@@ -22,12 +22,18 @@ npm start
 
 The [CFG](https://en.wikipedia.org/wiki/Control-flow_graph) divides the function into blocks. Each line of code must be executed only once when the program running into the block.
 
+![Control Flow Graph](/project-images/pflux/control-flow.png)
+
 ### Program Slice
 
 Program slice is a collection of code lines which may affect the value of chosen variable. For example, `sum = a + b` affects the value of `sum` and `if sign > 0: sum = a + b` possibly
 possibly affect the value of `sum`, both are program slice of `sum`.
 
+![Program Slice](/project-images/pflux/slice.png)
+
 ### Def-Clear Path
 
 Pflux gives the def-clear path but not def-use path. The only difference is that def-clear path has only one defining point at the beginning of the path but def-use path does not.
 _Clear_ can alse be regarded as killing a value of the variable, more accuratedly, reassgining a variable.
+
+![Def-Clear Path](/project-images/pflux/dc-path.png)
