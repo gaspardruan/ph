@@ -2,6 +2,7 @@ import { DocConfigItem } from "@/routes/doc-config";
 import { toTitle } from "@/utils/title";
 import clsx from "clsx";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 // import { usePathname } from "next/navigation";
 
 type DropdownItemProps = {
@@ -10,10 +11,9 @@ type DropdownItemProps = {
 };
 
 const DropdownItem = ({ scope, item }: DropdownItemProps) => {
-  // const pathname = usePathname();
+  const pathname = usePathname();
   const url = `/docs/${scope}/${item}`;
-  // const isActive = pathname === url;
-  const active = false;
+  const active = pathname === url;
 
   return (
     <Link href={url}>
@@ -21,8 +21,9 @@ const DropdownItem = ({ scope, item }: DropdownItemProps) => {
         className={clsx(
           "w-44 rounded py-2 px-4",
           "text-sm truncate",
-          "transition hover:bg-nord-secondary-deep/[0.12] active:bg-nord-secondary-deep/20",
-          active && "bg-nord-secondary-deep/20 font-bold !text-nord-primary"
+          "transition hover:bg-nord-secondary-deep/12 active:bg-nord-secondary-deep/20",
+          active &&
+            "bg-nord-secondary-deep/20 hover:!bg-nord-secondary-deep/30 font-bold text-nord-primary"
         )}
       >
         {toTitle(item)}

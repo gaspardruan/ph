@@ -8,12 +8,12 @@ import {
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { PropsWithChildren, useState } from "react";
 
 const className = clsx(
   "flex items-center justify-center",
   "rounded px-2 py-1.5",
-  "fill-nord-neutral dark:fill-nord-neutral-dark",
   "transition hover:bg-nord-secondary-deep/[0.12] active:bg-nord-secondary-deep/20"
 );
 
@@ -41,6 +41,11 @@ export const TextButton = ({ text, children }: TextButtonProps) => {
     onOpenChange: setIsOpen,
     middleware: [offset(10)],
   });
+
+  const params = useParams();
+  const scope = params.scope;
+  const active = scope === text.toLowerCase();
+
   const hover = useHover(context, {
     handleClose: safePolygon(),
   });
@@ -51,12 +56,10 @@ export const TextButton = ({ text, children }: TextButtonProps) => {
       <button
         ref={refs.setReference}
         {...getReferenceProps()}
-        className={className}
+        className={clsx(className, active && "font-bold text-nord-primary")}
       >
         <span className="text-sm">{text}</span>
-        <div>
-          <ChevronDown size={20} />
-        </div>
+        <ChevronDown size={20} />
       </button>
       {isOpen && (
         <div
