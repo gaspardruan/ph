@@ -7,7 +7,7 @@ import { LinkButton, NavButton } from "./NavButton";
 import { docConfig } from "@/routes/doc-config";
 import { toTitle } from "@/utils/title";
 import { memo } from "react";
-import { Menu } from "lucide-react";
+import { ChevronLeft, Menu, X } from "lucide-react";
 
 const ScopeList = () => {
   const scope = useSidebarStore((state) => state.scope);
@@ -59,19 +59,10 @@ export const MobileNav = memo(function MobileNav() {
       >
         <div className="flex h-16 px-2 items-center justify-between border-b border-nord-neutral/10  dark:border-nord-neutral-dark/10">
           <div className="flex items-center gap-2" onClick={() => setScope("")}>
-            {scope && (
-              <button className="material-symbols-outlined">
-                chevron_left
-              </button>
-            )}
+            {scope && <ChevronLeft />}
             <span>{title}</span>
           </div>
-          <button
-            className="material-symbols-outlined"
-            onClick={() => setIsOpen(false)}
-          >
-            close
-          </button>
+          <X onClick={() => setIsOpen(false)} />
         </div>
         <div className="flex-1 overflow-y-auto">
           <div className={clsx("flex flex-col gap-6", "pl-2 pr-3 pt-5 pb-2")}>

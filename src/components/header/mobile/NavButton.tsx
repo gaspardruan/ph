@@ -2,6 +2,7 @@ import { useParams, usePathname } from "next/navigation";
 import { useSidebarStore } from "./useSidebarStore";
 import Link from "next/link";
 import clsx from "clsx";
+import { ChevronRight } from "lucide-react";
 
 type NavButtonProps = {
   text: string;
@@ -22,9 +23,7 @@ export const NavButton = ({ text }: NavButtonProps) => {
       )}
     >
       <span className="text-sm">{text}</span>
-      <span className="material-symbols-outlined !text-(length:--text-xl)">
-        chevron_right
-      </span>
+      <ChevronRight size={20} />
     </button>
   );
 };
