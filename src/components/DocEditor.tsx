@@ -29,6 +29,7 @@ export const Doc = ({ content }: DocProps) => {
         [Crepe.Feature.BlockEdit]: false,
         [Crepe.Feature.Latex]: false,
         [Crepe.Feature.Toolbar]: false,
+        [Crepe.Feature.ImageBlock]: false,
       },
       featureConfigs: {
         [Crepe.Feature.CodeMirror]: {

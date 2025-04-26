@@ -25,6 +25,10 @@
 
 .crepe > .milkdown > .ProseMirror {
   @apply px-10 py-5 sm:px-20 sm:py-10 md:px-25 md:py-12 lg:px-30 lg:py-15;
+
+  .ProseMirror-selectednode {
+    outline: none;
+  }
 }
 
 .crepe-doc > .milkdown > .ProseMirror {
