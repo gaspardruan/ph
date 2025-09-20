@@ -48,6 +48,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      suppressHydrationWarning
       className={clsx(
         nunito.variable,
         inter.variable,
@@ -55,6 +56,27 @@ export default function RootLayout({
         jetbrainsMono.variable
       )}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var darkMode = localStorage.getItem("themeStore");
+                  if (darkMode) {
+                    var parsed = JSON.parse(darkMode);
+                    if (parsed.state?.darkMode) {
+                      document.documentElement.classList.add("dark");
+                    }
+                  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    document.documentElement.classList.add("dark");
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={clsx(
           "min-h-screen flex flex-col",
