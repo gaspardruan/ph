@@ -19,9 +19,12 @@ const { title, description, headings } = Astro.props;
 
 <BaseLayout title={title} description={description}>
   <main class="flex-1 bg-nord-background pb-16 pt-32 dark:bg-nord-background-dark md:pb-24">
-    <article class="doc-shell prose-doc rounded-lg border border-nord-outline bg-nord-foreground px-5 py-8 shadow-sm dark:border-nord-outline-dark dark:bg-nord-foreground-dark md:px-10 md:py-12">
-      <slot />
-    </article>
-    <DocToc headings={headings} />
+    <div class="doc-layout-grid mx-auto grid gap-8 xl:grid-cols-[1fr_minmax(0,56rem)_16rem] 2xl:grid-cols-[1fr_minmax(0,56rem)_18rem]">
+      <div aria-hidden="true"></div>
+      <article class="prose-doc rounded-lg border border-nord-outline bg-nord-foreground px-5 py-8 shadow-sm dark:border-nord-outline-dark dark:bg-nord-foreground-dark md:px-10 md:py-12">
+        <slot />
+      </article>
+      <DocToc headings={headings} />
+    </div>
   </main>
 </BaseLayout>

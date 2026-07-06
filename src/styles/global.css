@@ -60,6 +60,10 @@ body {
   margin-inline: auto;
 }
 
+.doc-layout-grid {
+  width: min(calc(100% - 2rem), 86rem);
+}
+
 .prose-doc {
   font-size: 1.0625rem;
   line-height: 1.8;

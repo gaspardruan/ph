@@ -14,8 +14,8 @@ const headings = Astro.props.headings.filter((heading) => heading.depth > 1 && h
 
 {
   headings.length > 0 && (
-    <aside class="fixed bottom-32 right-16 top-48 hidden w-60 overflow-y-auto xl:block 2xl:right-[calc(50vw-43rem)]">
-      <nav class="styled-scrollbar flex max-h-full flex-col gap-2 pr-3 text-sm">
+    <aside class="hidden xl:block">
+      <nav class="styled-scrollbar sticky top-32 flex max-h-[calc(100vh-10rem)] flex-col gap-2 overflow-y-auto pr-3 text-sm">
         {headings.map((heading) => (
           <a
             href={`#${heading.slug}`}
