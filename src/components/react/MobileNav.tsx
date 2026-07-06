@@ -1,5 +1,6 @@
 import { ChevronLeft, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import ThemeToggle from "./ThemeToggle";
 
 type ProjectItem = {
@@ -12,8 +13,17 @@ type MobileNavProps = {
 };
 
 export default function MobileNav({ projects }: MobileNavProps) {
+  const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
   const [scope, setScope] = useState("");
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      setPortalRoot(document.body);
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", open);
@@ -30,17 +40,8 @@ export default function MobileNav({ projects }: MobileNavProps) {
 
   const title = scope ? "Project" : "Menu";
 
-  return (
-    <div className="flex md:hidden">
-      <button
-        type="button"
-        className="flex h-10 w-10 items-center justify-center rounded transition hover:bg-nord-secondary-deep/10"
-        onClick={() => setOpen(true)}
-        aria-label="Open menu"
-      >
-        <Menu />
-      </button>
-
+  const sidebar = (
+    <>
       {open && (
         <button
           type="button"
@@ -52,24 +53,24 @@ export default function MobileNav({ projects }: MobileNavProps) {
 
       <nav
         className={[
-          "fixed bottom-0 top-0 z-40 flex w-64 flex-col rounded-l-2xl border border-nord-neutral/10",
+          "fixed bottom-0 top-0 z-40 flex w-[min(20rem,calc(100vw-2rem))] flex-col rounded-l-2xl border border-nord-neutral/10",
           "bg-nord-foreground/90 px-6 pb-8 pr-4 shadow-lg backdrop-blur",
           "transition-[right] duration-300 dark:border-nord-neutral-dark/10 dark:bg-nord-foreground-dark/90",
-          open ? "right-0" : "-right-64",
+          open ? "right-0" : "-right-[min(20rem,calc(100vw-2rem))]",
         ].join(" ")}
       >
-        <div className="flex h-16 items-center justify-between border-b border-nord-neutral/10 px-2 dark:border-nord-neutral-dark/10">
+        <div className="flex h-16 shrink-0 items-center justify-between border-b border-nord-neutral/10 px-2 dark:border-nord-neutral-dark/10">
           <button
             type="button"
-            className="flex items-center gap-2 rounded py-2 pr-2 font-semibold"
+            className="flex min-w-0 items-center gap-2 rounded py-2 pr-2 font-semibold"
             onClick={() => setScope("")}
           >
             {scope && <ChevronLeft size={18} />}
-            <span>{title}</span>
+            <span className="truncate">{title}</span>
           </button>
           <button
             type="button"
-            className="rounded p-2 transition hover:bg-nord-secondary-deep/10"
+            className="shrink-0 rounded p-2 transition hover:bg-nord-secondary-deep/10"
             onClick={() => setOpen(false)}
             aria-label="Close menu"
           >
@@ -77,7 +78,7 @@ export default function MobileNav({ projects }: MobileNavProps) {
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto py-5">
+        <div className="min-h-0 flex-1 overflow-y-auto py-5">
           {!scope ? (
             <button
               type="button"
@@ -102,10 +103,24 @@ export default function MobileNav({ projects }: MobileNavProps) {
           )}
         </div>
 
-        <div className="flex justify-center">
+        <div className="shrink-0 pt-4">
           <ThemeToggle />
         </div>
       </nav>
+    </>
+  );
+
+  return (
+    <div className="flex md:hidden">
+      <button
+        type="button"
+        className="flex h-10 w-10 items-center justify-center rounded transition hover:bg-nord-secondary-deep/10"
+        onClick={() => setOpen(true)}
+        aria-label="Open menu"
+      >
+        <Menu />
+      </button>
+      {portalRoot ? createPortal(sidebar, portalRoot) : null}
     </div>
   );
 }

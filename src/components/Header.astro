@@ -58,7 +58,7 @@ const revealOnScroll = mode === "reveal";
     </nav>
 
     <MobileNav
-      client:load
+      client:only="react"
       projects={projects.map((project) => ({
         id: project.id,
         title: project.data.title,
