@@ -6,10 +6,23 @@ import ThemeToggle from "@/components/react/ThemeToggle";
 const projects = (await getCollection("project")).sort(
   (a, b) => a.data.order - b.data.order
 );
+
+type Props = {
+  mode?: "fixed" | "reveal";
+};
+
+const { mode = "fixed" } = Astro.props;
+const revealOnScroll = mode === "reveal";
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-20 border-b border-nord-neutral/10 bg-nord-background/80 px-4 py-4 shadow-sm shadow-nord-background backdrop-blur dark:border-nord-neutral-dark/10 dark:bg-nord-background-dark/80 dark:shadow-nord-background-dark lg:px-10 xl:px-20"
+  id="site-header"
+  data-reveal-on-scroll={revealOnScroll ? "true" : undefined}
+  class:list={[
+    "fixed inset-x-0 top-0 z-20 border-b border-nord-neutral/10 bg-nord-background/80 px-4 py-4 shadow-sm shadow-nord-background backdrop-blur dark:border-nord-neutral-dark/10 dark:bg-nord-background-dark/80 dark:shadow-nord-background-dark lg:px-10 xl:px-20",
+    "transition-transform duration-300",
+    revealOnScroll && "-translate-y-full",
+  ]}
 >
   <div class="mx-auto flex max-w-7xl items-center justify-between">
     <a href="/" aria-label="Home" class="flex h-10 w-10 items-center justify-center">
@@ -53,3 +66,20 @@ const projects = (await getCollection("project")).sort(
     />
   </div>
 </header>
+
+{
+  revealOnScroll && (
+    <script>
+      const header = document.querySelector<HTMLElement>("#site-header[data-reveal-on-scroll='true']");
+
+      if (header) {
+        const updateHeader = () => {
+          header.classList.toggle("-translate-y-full", window.scrollY <= 80);
+        };
+
+        updateHeader();
+        window.addEventListener("scroll", updateHeader, { passive: true });
+      }
+    </script>
+  )
+}
