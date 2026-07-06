@@ -11,7 +11,7 @@ const projects = (await getCollection("project")).sort(
 
 <BaseLayout headerMode="reveal">
   <main class="flex-1 bg-nord-background dark:bg-nord-background-dark">
-    <section class="relative min-h-screen overflow-hidden">
+    <section class="relative h-screen overflow-hidden">
       <div class="absolute inset-x-0 top-0 flex justify-center">
         <div class="w-full min-w-[750px] max-w-[1200px]">
           <svg
@@ -21,6 +21,7 @@ const projects = (await getCollection("project")).sort(
             viewBox="0 0 1241 951"
             fill="none"
             aria-hidden="true"
+            class="h-auto w-full"
           >
             <g opacity="0.4">
               <path
@@ -32,7 +33,7 @@ const projects = (await getCollection("project")).sort(
         </div>
       </div>
 
-      <div class="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <div class="relative flex h-full min-w-64 flex-col items-center justify-center">
         <img
           src="/young.jpg"
           width="161"
@@ -42,7 +43,7 @@ const projects = (await getCollection("project")).sort(
           style="--animation-delay: 0.3s"
         />
         <h1
-          class="liquid-content my-4 flex items-center text-xl font-bold text-nord-neutral-deep dark:text-nord-neutral-deep-dark sm:text-6xl xl:text-7xl"
+          class="liquid-content my-4 flex items-center text-xl font-bold text-nord-neutral dark:text-nord-neutral-dark sm:text-6xl xl:text-7xl"
           style="--animation-delay: 0.5s"
         >
           <span class="h-12 w-10 sm:h-36 sm:w-30 xl:h-43 xl:w-36">
@@ -51,7 +52,7 @@ const projects = (await getCollection("project")).sort(
           uan Zhongqiu
         </h1>
         <p
-          class="liquid-content max-w-2xl text-base leading-7 sm:text-2xl"
+          class="liquid-content w-96 text-center text-base sm:w-full sm:text-2xl"
           style="--animation-delay: 0.7s"
         >
           Love clean code, exploring, gaming, and learning everything happens to come my way.
