@@ -19,7 +19,11 @@
 </svg>
 
 <script>
-  const replaySignature = () => {
+  const replaySignature = (event: PageTransitionEvent) => {
+    if (event.persisted || document.documentElement.classList.contains("skip-signature-animation")) {
+      return;
+    }
+
     document.querySelectorAll<SVGPathElement>(".signature-path").forEach((path) => {
       path.style.animation = "none";
       path.getBoundingClientRect();
@@ -37,6 +41,12 @@
     stroke-dasharray: 350px 0;
     stroke-width: 7px;
     animation: draw-signature 3s ease 0.5s backwards;
+  }
+
+  :global(.skip-signature-animation) .signature-path {
+    animation: none;
+    opacity: 1;
+    stroke-dasharray: 420px 0;
   }
 
   @keyframes draw-signature {

@@ -46,6 +46,26 @@ const pageTitle = title === "Ruan Zhongqiu" ? title : `${title} | Ruan Zhongqiu`
         }
       })();
     </script>
+    <script is:inline>
+      (() => {
+        try {
+          const navigation = performance.getEntriesByType("navigation")[0];
+          const isReload = navigation?.type === "reload";
+          const referrer = document.referrer ? new URL(document.referrer) : null;
+
+          if (
+            !isReload &&
+            location.pathname === "/" &&
+            referrer?.origin === location.origin &&
+            referrer.pathname.startsWith("/docs/")
+          ) {
+            document.documentElement.classList.add("skip-signature-animation");
+          }
+        } catch {
+          return;
+        }
+      })();
+    </script>
   </head>
   <body class="flex min-h-screen flex-col">
     <Header mode={headerMode} />
