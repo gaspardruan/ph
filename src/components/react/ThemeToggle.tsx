@@ -1,4 +1,5 @@
-import { MoonIcon } from "lucide-react";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { useState } from "react";
 
 const iconButtonClass =
   "flex h-8 w-8 items-center justify-center rounded transition hover:bg-nord-secondary-deep/10 active:bg-nord-secondary-deep/20";
@@ -12,9 +13,17 @@ function GitHubMark() {
 }
 
 export default function ThemeToggle() {
+  const [dark, setDark] = useState(
+    () => typeof document !== "undefined" && document.documentElement.classList.contains("dark")
+  );
+
   const toggleTheme = () => {
-    const dark = document.documentElement.classList.toggle("dark");
-    localStorage.setItem("theme", dark ? "dark" : "light");
+    setDark((current) => {
+      const next = !current;
+      document.documentElement.classList.toggle("dark", next);
+      localStorage.setItem("theme", next ? "dark" : "light");
+      return next;
+    });
   };
 
   return (
@@ -36,7 +45,11 @@ export default function ThemeToggle() {
         aria-label="Toggle theme"
         title="Toggle theme"
       >
-        <MoonIcon size={20} strokeWidth={1.6} />
+        {dark ? (
+          <SunIcon size={20} strokeWidth={1.6} />
+        ) : (
+          <MoonIcon size={20} strokeWidth={1.6} />
+        )}
       </button>
     </div>
   );

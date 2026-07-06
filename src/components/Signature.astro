@@ -18,21 +18,43 @@
   </g>
 </svg>
 
+<script>
+  const replaySignature = () => {
+    document.querySelectorAll<SVGPathElement>(".signature-path").forEach((path) => {
+      path.style.animation = "none";
+      path.getBoundingClientRect();
+      path.style.animation = "";
+    });
+  };
+
+  window.addEventListener("pageshow", replaySignature);
+</script>
+
 <style>
   .signature-path {
     fill: none;
     stroke: currentColor;
-    stroke-dasharray: 215px;
-    stroke-dashoffset: 215px;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 4px;
-    animation: draw-signature 1.8s ease forwards;
+    stroke-dasharray: 350px 0;
+    stroke-width: 7px;
+    animation: draw-signature 3s ease 0.5s backwards;
   }
 
   @keyframes draw-signature {
-    to {
-      stroke-dashoffset: 0;
+    0% {
+      stroke-dasharray: 0 350px;
+      opacity: 0;
+    }
+
+    25% {
+      opacity: 1;
+    }
+
+    99% {
+      stroke-dasharray: 350px 0;
+    }
+
+    100% {
+      stroke-dasharray: 420px 0;
     }
   }
 </style>
