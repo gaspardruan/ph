@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import Signature from "@/components/Signature.astro";
+
+const projects = (await getCollection("project")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout>
+  <main class="flex-1 bg-nord-background dark:bg-nord-background-dark">
+    <section class="relative min-h-screen overflow-hidden">
+      <div class="absolute inset-x-0 top-0 flex justify-center">
+        <div class="w-full min-w-[750px] max-w-[1200px]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1241"
+            height="951"
+            viewBox="0 0 1241 951"
+            fill="none"
+            aria-hidden="true"
+          >
+            <g opacity="0.4">
+              <path
+                class="liquid-path fill-nord-foreground dark:fill-nord-foreground-dark"
+                d="M103.925 147.326C70.0044 115.307 5 47.7209 5 0H1236C1229.62 23.1701 1198.43 38.0279 1185.75 58.4593C1158.49 102.396 1084.06 147.347 1063.97 194.976C1058.92 206.936 1060.46 215.038 1056.1 227.26C1028.36 304.852 931.062 327.795 889.124 365.655C847.186 403.514 831.534 436.879 819.462 491.864C809.033 539.362 815.454 672.407 788.916 672.407C762.378 672.407 756.255 529.984 756.255 520.642C756.255 511.3 752.879 502.875 741.985 503C731.199 503.124 727.715 511.3 727.715 520.642C727.715 529.984 736.107 944.453 693.495 944.453C645.143 944.453 650.462 700.71 650.462 682.387C650.462 664.064 647.337 638.069 626.016 637.5C604.325 636.922 599.82 671.774 599.82 682.387C599.82 693 595.398 811.139 560.417 811.139C525.437 811.139 519.206 506.863 519.206 493.5C519.206 480.137 509.842 470.429 496.5 470.429C483.158 470.429 474 477.5 474 493.5C474 509.5 468.032 565.825 440 565.825C411.968 565.825 394.5 486 389 459.294C383.5 432.588 346.348 359.852 308.602 332.996C274.07 308.427 282.5 311.773 229.5 282C178.806 253.522 150.121 214.71 135.83 189.873C126.966 174.47 116.848 159.525 103.925 147.326Z"
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+        <img
+          src="/young.jpg"
+          width="161"
+          height="288"
+          alt="Ruan Zhongqiu"
+          class="liquid-content w-30 sm:w-35 xl:w-40"
+          style="--animation-delay: 0.3s"
+        />
+        <h1
+          class="liquid-content my-4 flex items-center text-xl font-bold text-nord-neutral-deep dark:text-nord-neutral-deep-dark sm:text-6xl xl:text-7xl"
+          style="--animation-delay: 0.5s"
+        >
+          <span class="h-12 w-10 sm:h-36 sm:w-30 xl:h-43 xl:w-36">
+            <Signature />
+          </span>
+          uan Zhongqiu
+        </h1>
+        <p
+          class="liquid-content max-w-2xl text-base leading-7 sm:text-2xl"
+          style="--animation-delay: 0.7s"
+        >
+          Love clean code, exploring, gaming, and learning everything happens to come my way.
+        </p>
+      </div>
+    </section>
+
+    <section class="content-shell pb-20 md:pb-28">
+      <div class="rounded-lg border border-nord-outline bg-nord-foreground p-5 shadow-sm dark:border-nord-outline-dark dark:bg-nord-foreground-dark md:p-8">
+        <h2 class="text-3xl font-extrabold text-nord-neutral-deep dark:text-nord-neutral-deep-dark">
+          About me
+        </h2>
+        <div class="mt-4 space-y-4 text-base leading-8 text-nord-solid dark:text-nord-solid-dark md:text-lg">
+          <p>
+            I was born on the Mid-Autumn Festival and grew up in a small town in Wuhan, where I completed primary school and junior high.
+          </p>
+          <p>
+            Eventually, I was admitted to Beihang, majoring in Software Engineering. Now, I am about to begin my graduate studies in Software Engineering at Tsinghua.
+          </p>
+          <p>
+            When I am bored, I like to play LOL and Hearthstone, read comics, and watch animations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-shell pb-20 md:pb-28">
+      <div class="mb-6 flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-3xl font-extrabold text-nord-neutral-deep dark:text-nord-neutral-deep-dark">
+            Projects
+          </h2>
+          <p class="mt-2 text-nord-solid dark:text-nord-solid-dark">
+            Selected work and notes, rendered from MDX at build time.
+          </p>
+        </div>
+      </div>
+      <div class="grid gap-4">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              href={`/docs/project/${project.id}`}
+              title={project.data.title}
+              description={project.data.description}
+              cover={project.data.cover}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,34 @@
+---
+type Props = {
+  href: string;
+  title: string;
+  description: string;
+  cover?: string;
+};
+
+const { href, title, description, cover } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group grid gap-4 rounded-lg border border-nord-outline bg-nord-foreground p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-nord-secondary-deep hover:shadow-md dark:border-nord-outline-dark dark:bg-nord-foreground-dark sm:grid-cols-[12rem_1fr]"
+>
+  {
+    cover && (
+      <img
+        src={cover}
+        alt=""
+        class="aspect-video w-full rounded-md border border-nord-outline object-cover dark:border-nord-outline-dark"
+        loading="lazy"
+      />
+    )
+  }
+  <div class="flex min-w-0 flex-col justify-center">
+    <h3 class="text-xl font-extrabold text-nord-neutral-deep dark:text-nord-neutral-deep-dark">
+      {title}
+    </h3>
+    <p class="mt-2 text-sm leading-6 text-nord-solid dark:text-nord-solid-dark">
+      {description}
+    </p>
+  </div>
+</a>

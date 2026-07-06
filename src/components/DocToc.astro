@@ -1,0 +1,33 @@
+---
+type Heading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+type Props = {
+  headings: Heading[];
+};
+
+const headings = Astro.props.headings.filter((heading) => heading.depth > 1 && heading.depth < 4);
+---
+
+{
+  headings.length > 0 && (
+    <aside class="fixed bottom-32 right-16 top-48 hidden w-60 overflow-y-auto xl:block 2xl:right-[calc(50vw-43rem)]">
+      <nav class="styled-scrollbar flex max-h-full flex-col gap-2 pr-3 text-sm">
+        {headings.map((heading) => (
+          <a
+            href={`#${heading.slug}`}
+            class:list={[
+              "rounded py-1 transition hover:text-nord-primary",
+              heading.depth === 3 ? "pl-4 text-nord-dim dark:text-nord-dim-dark" : "font-semibold",
+            ]}
+          >
+            {heading.text}
+          </a>
+        ))}
+      </nav>
+    </aside>
+  )
+}
